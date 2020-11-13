@@ -8,9 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var rotationValue: Double = 0
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            HStack{
+                Circle().stroke(Color.purple,style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .frame(width: 50, height: 50)
+                
+                Circle().stroke(Color.purple,style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .frame(width: 50, height: 50)
+            }.rotationEffect(.degrees(rotationValue),anchor: .center)
+            HStack{
+                Circle().stroke(Color.purple,style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .frame(width: 50, height: 50)
+                
+                Circle().stroke(Color.purple,style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .frame(width: 50, height: 50)
+            }.rotationEffect(.degrees(rotationValue),anchor: .center)
+        }
+        .animation(Animation.linear(duration: 1).repeatForever())
+        .onAppear(){
+            rotationValue = -360
+        }
+        
     }
 }
 
